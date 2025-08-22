@@ -13,13 +13,15 @@
 # use while loop to define condition
 # use if condition in while loop to keep input in range
 # print seats and ask input
-
 seats = set(range(1, 51))
-book_number = int(input("Enter a number from 1 to 50: "))
-while book_number > 0:
-    if book_number in seats:
-        seats.remove(book_number)
-    else: print("Ticket number is not available.")
-    print(seats)
-    book_number = int(input("Enter a number from 1 to 50: "))
+while True:
+    try:
+        book_number = int(input("Enter a number from 1 to 50: "))
+        if book_number in seats:
+            seats.remove(book_number)
+            print(f"You have successfully booked sit {book_number}")
+        else: 
+            print("Ticket number is not available.\n","Remaining seats: ", seats)
 
+    except Exception:
+        print("You entered an invalid input. Enter a number instead.")
