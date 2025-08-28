@@ -1,0 +1,12 @@
+{
+  "Name": "Simeon Akinrinola",
+  "Track": "AI Development",
+  "Seat Number": 142,
+  "Courses": {
+    "Python": "A",
+    "MLOPS": "A",
+    "Design": "A",
+    "Logic": "A"
+  },
+  "Is Graduated": true
+}
