@@ -138,28 +138,58 @@
 # read the data back
 # print the data and python grade
 
-import json
+# import json
+# from pathlib import Path
+
+# workspace = Path("workspace_files")
+# json_file = workspace / "json_file"
+
+# student_data = {"Name": "Simeon Akinrinola",
+#                 "Track": "AI Development",
+#                 "Seat Number": 142,
+#                 "Courses": {"Python": "A", "MLOPS": "A", "Design": "A", "Logic": "A"},
+#                 "Is Graduated": True}
+
+# # save to json
+# with open(json_file, "w", encoding="utf-8") as f:
+#     json.dump(student_data, f, indent=2)
+
+# # read the data
+# with open(json_file, "r", encoding="utf-8") as f:
+#     content = json.load(f)
+
+# print("\nName:", content["Name"], "\n"
+#       "Track:", content["Track"], "\n"
+#       "Seat Number:", content["Seat Number"], "\n"
+#       "Python Grade:", content["Courses"]["Python"], "\n"
+#       "Graduated:", content["Is Graduated"], "\n")
+
+
+# WORKING WITH CSV FILES - SPREADSHEET LIKE DATA
+import csv
 from pathlib import Path
-
 workspace = Path("workspace_files")
-json_file = workspace / "json_file"
+csv_file = workspace / "students.csv"
 
-student_data = {"Name": "Simeon Akinrinola",
-                "Track": "AI Development",
-                "Seat Number": 142,
-                "Courses": {"Python": "A", "MLOPS": "A", "Design": "A", "Logic": "A"},
-                "Is Graduated": True}
+# Create sample student data
+students = [
+    ["Name", "Age", "Course", "Grade"], # Header row
+    ["Precious", 20, "Python", "A"],
+    ["Favour", 22, "JavaScript", "B+"],
+    ["Ore", 21, "Python", "A-"],
+    ["Susan", 23, "Data Science", "A"]
+]
 
-# save to json
-with open(json_file, "w", encoding="utf-8") as f:
-    json.dump(student_data, f, indent=2)
+# Write data to csv file
+with open(csv_file, "w", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerows(students) # Write all rows at once
 
-# read the data
-with open(json_file, "r", encoding="utf-8") as f:
-    content = json.load(f)
+print("Student data written to CSV file!")
 
-print("\nName:", content["Name"], "\n"
-      "Track:", content["Track"], "\n"
-      "Seat Number:", content["Seat Number"], "\n"
-      "Python Grade:", content["Courses"]["Python"], "\n"
-      "Graduated:", content["Is Graduated"], "\n")
+# Read the CSV file
+with open(csv_file, "r", encoding="utf-8") as f:
+    reader = csv.reader(f)
+
+    for row_number, row in enumerate(reader):
+        if row_number == 0
