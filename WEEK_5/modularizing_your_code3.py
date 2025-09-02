@@ -155,53 +155,84 @@
 # the class has methods that deposits, withdraws, transfers, checks
 #  balance and generates account number
 
-class bankAccount:
-    def __init__(self, owner, bank_name, balance=0):
-        # ATTRIBUTES
+# class bankAccount:
+#     def __init__(self, owner, bank_name, balance=0):
+#         # ATTRIBUTES
+#         self.owner = owner
+#         self.bank_name = bank_name
+#         self.balance = balance
+#         self.account_number = self.generate_account_number()
+    
+#     # METHODS
+#     def deposit(self, amount):
+#         if amount > 0:
+#             self.balance += amount
+#             return f"{self.owner} has deposited {amount} into their {self.bank_name} account."
+#         else:
+#             return "No amount entered"
+    
+#     def withdraw(self, amount):
+#         if amount > 0 <= self.balance:
+#             self.balance -= amount
+#             return f"{self.owner} has withdrawn {amount} from their {self.bank_name} account."
+#         return "No amount entered"
+    
+#     def transfer(self, Recipient, amount):
+#         if Recipient and amount:
+#             self.balance -= amount
+#             return f"{self.owner} has transfered {amount} from their {self.bank_name} account to {Recipient}"
+#         return "No Recipient or amount entered"
+    
+#     def check_balance(self):
+#         return f"Your balance is {self.balance}"
+    
+#     def generate_account_number(self) -> int:
+#         import random
+#         return f"Your account number is: 06{random.randint(10000000, 99999999)}"
+    
+    
+
+
+
+
+# simeon = bankAccount("Simeon Akinrinola", "UBA")
+# print(simeon.deposit(5000000000))
+# print(simeon.balance)
+# print(simeon.generate_account_number())
+# print(simeon.withdraw(2000000))
+# print(simeon.check_balance())
+
+
+# write a class that simulates a phone
+#  in naija. the phone can poweron, buy airtime, make call, send sms
+class NaijaPhone:
+    def __init__(self, owner, network):
         self.owner = owner
-        self.bank_name = bank_name
-        self.balance = balance
-        self.account_number = self.generate_account_number()
+        self.network = network
+        self.airtime_balance = 0
+        self.power_on = False
+
+    def power_on(self):
+        self.power_on = True
+        return f"{self.owner}'s phone is on!"
     
-    # METHODS
-    def deposit(self, amount):
-        if amount > 0:
-            self.balance += amount
-            return f"{self.owner} has deposited {amount} into their {self.bank_name} account."
-        else:
-            return "No amount entered"
+    def buy_airtime(self, amount):
+        if amount and amount > 0:
+            self.airtime_balance += amount
+            return f"{self.owner}'s has successfully bought N{amount} airtime"
+        return "Invalid amount!"
     
-    def withdraw(self, amount):
-        if amount > 0 <= self.balance:
-            self.balance -= amount
-            return f"{self.owner} has withdrawn {amount} from their {self.bank_name} account."
-        return "No amount entered"
+    def make_call(self, contact):
+        if contact and self.airtime_balance >= 4:
+            self.airtime_balance -= 4
+            return f"{self.owner} is calling {contact}"
+        elif not self.power_on:
+            return "Power off!"
+        return "Insufficient Balance or No Contact Entered"
     
-    def transfer(self, Recipient, amount):
-        if Recipient and amount:
-            self.balance -= amount
-            return f"{self.owner} has transfered {amount} from their {self.bank_name} account to {Recipient}"
-        return "No Recipient or amount entered"
-    
-    def check_balance(self):
-        return f"Your balance is {self.balance}"
-    
-    def generate_account_number(self) -> int:
-        import random
-        return f"Your account number is: 06{random.randint(10000000, 99999999)}"
-    
-    
-
-
-
-
-simeon = bankAccount("Simeon Akinrinola", "UBA")
-print(simeon.deposit(5000000000))
-print(simeon.balance)
-print(simeon.generate_account_number())
-print(simeon.withdraw(2000000))
-print(simeon.check_balance())
-
-
-
-
+    def send_sms(self, contact):
+        if contact and self.airtime_balance >= 6:
+            return f"{self.owner} sent an SMS to {contact}"
+        elif not self.power_on:
+            return "Power off!"
+        return "Insufficient Balance or No Contact Entered"
